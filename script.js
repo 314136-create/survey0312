@@ -41,19 +41,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData(form);
 
         const data = {
-            q1: formData.get('q1'),
-            q2: formData.getAll('q2[]'), // ⭐ 多選 (記得 Supabase 資料表要設為 text[] 或 jsonb)
-            q2_other: formData.get('q2_other_text'),
-            q3: formData.get('q3'),
-            q4: formData.get('q4'),
-            q5: formData.get('q5'),
-            q6: formData.get('q6'),
-            q7: formData.get('q7'),
-            q8: formData.get('q8'),
-            q9: formData.get('q9'),
-            q10: formData.get('q10')
+            Q1: formData.get('q1'),
+            Q2: formData.getAll('q2[]'), 
+            Q2_other: formData.get('q2_other_text'),
+            Q3: formData.get('q3'),
+            Q4: formData.get('q4'),
+            Q5: formData.get('q5'),
+            Q6: formData.get('q6'),
+            Q7: formData.get('q7'),
+            Q8: formData.get('q8'),
+            Q9: formData.get('q9'),
+            Q10: formData.get('q10')
         };
-
         const { error } = await supabase
             .from('survey0312')
             .insert([data]);
