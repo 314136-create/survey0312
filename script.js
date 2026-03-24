@@ -6,12 +6,11 @@ const supabase = createClient(
 )
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 🚨 修正 1：這裡要改回 'survey-form'，不然 JS 會抓不到你的表單
+    // ✅ 這裡已經幫你改成正確的表單 ID 了
     const form = document.getElementById('survey-form');
     const successMessage = document.getElementById('success-message');
     const resetBtn = document.getElementById('reset-btn');
 
-    // Q2 other：監聽輸入框，有打字就自動打勾
     const q2OtherCheckbox = document.getElementById('q2-other-checkbox');
     const q2OtherText = document.getElementById('q2-other-text');
 
@@ -25,11 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 🚀 送出表單
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // 加上表單驗證，確保必填 (required) 都有填到
         if (!form.checkValidity()) {
             form.reportValidity(); 
             return;
@@ -41,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formData = new FormData(form);
 
-        // 🚨 修正 2：formData.get 括號裡面的字「必須是小寫」，才能對應到 HTML 的 name 屬性
+        // ✅ 這裡已經幫你把括號內全部改成小寫，對應你的 HTML
         const data = {
             Q1: formData.get('q1'),
             Q2: formData.getAll('q2[]'), 
@@ -68,12 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // ✅ 成功才顯示
         form.classList.add('hidden');
         successMessage.classList.remove('hidden');
     });
 
-    // reset
     resetBtn.addEventListener('click', () => {
         form.reset();
         const submitBtn = form.querySelector('.submit-btn');
