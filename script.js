@@ -6,7 +6,7 @@ const supabase = createClient(
 )
 
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('survey0312-form');
+    const form = document.getElementById('survey-form');
     const successMessage = document.getElementById('success-message');
     const resetBtn = document.getElementById('reset-btn');
 
@@ -40,18 +40,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formData = new FormData(form);
 
-        const data = {
-            Q1: formData.get('Q1'),
-            Q2: formData.getAll('Q2[]'), 
-            Q2_other: formData.get('Q2_other_text'),
-            Q3: formData.get('Q3'),
-            Q4: formData.get('Q4'),
-            Q5: formData.get('Q5'),
-            Q6: formData.get('Q6'),
-            Q7: formData.get('Q7'),
-            Q8: formData.get('Q8'),
-            Q9: formData.get('Q9'),
-            Q10: formData.get('Q10')
+    const data = {
+            Q1: formData.get('q1'),
+            Q2: formData.getAll('q2[]'), 
+            Q2_other: formData.get('q2_other_text'),
+            Q3: formData.get('q3'),
+            Q4: formData.get('q4'),
+            Q5: formData.get('q5'),
+            Q6: formData.get('q6'),
+            Q7: formData.get('q7'),
+            Q8: formData.get('q8'),
+            Q9: formData.get('q9'),
+            Q10: formData.get('q10')
         };
         const { error } = await supabase
             .from('survey0312')
