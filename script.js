@@ -1,8 +1,8 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
 const supabase = createClient(
-  '你的SUPABASE_URL',
-  '你的SUPABASE_ANON_KEY'
+  'https://hjuhdebkjtesrpabnxnq.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhqdWhkZWJranRlc3JwYWJueG5xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzNTA4NjAsImV4cCI6MjA4OTkyNjg2MH0.UZMpTWQkxrQh0xAXoUoLBk1wYXcUwmhnW6AmWyeHCig'
 )
 
 document.addEventListener('DOMContentLoaded', () => {
