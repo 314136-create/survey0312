@@ -6,7 +6,7 @@ const supabase = createClient(
 )
 
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('survey-form');
+    const form = document.getElementById('survey0312-form');
     const successMessage = document.getElementById('success-message');
     const resetBtn = document.getElementById('reset-btn');
 
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const { error } = await supabase
-            .from('survey')
+            .from('survey0312')
             .insert([data]);
 
         if (error) {
