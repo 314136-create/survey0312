@@ -6,6 +6,7 @@ const supabase = createClient(
 )
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 🚨 修正 1：這裡要改回 'survey-form'，不然 JS 會抓不到你的表單
     const form = document.getElementById('survey-form');
     const successMessage = document.getElementById('success-message');
     const resetBtn = document.getElementById('reset-btn');
@@ -19,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (q2OtherText.value.trim() !== '') {
                 q2OtherCheckbox.checked = true;
             } else {
-                q2OtherCheckbox.checked = false; // 如果清空了，順便取消打勾
+                q2OtherCheckbox.checked = false; 
             }
         });
     }
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 加上表單驗證，確保必填 (required) 都有填到
         if (!form.checkValidity()) {
-            form.reportValidity(); // 觸發瀏覽器原生的必填提示
+            form.reportValidity(); 
             return;
         }
 
@@ -40,7 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formData = new FormData(form);
 
-    const data = {
+        // 🚨 修正 2：formData.get 括號裡面的字「必須是小寫」，才能對應到 HTML 的 name 屬性
+        const data = {
             Q1: formData.get('q1'),
             Q2: formData.getAll('q2[]'), 
             Q2_other: formData.get('q2_other_text'),
@@ -53,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             Q9: formData.get('q9'),
             Q10: formData.get('q10')
         };
+        
         const { error } = await supabase
             .from('survey0312')
             .insert([data]);
