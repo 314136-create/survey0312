@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const successMessage = document.getElementById('success-message');
     const resetBtn = document.getElementById('reset-btn');
 
-    // Q2 other
+    // Q2 other：監聽輸入框，有打字就自動打勾
     const q2OtherCheckbox = document.getElementById('q2-other-checkbox');
     const q2OtherText = document.getElementById('q2-other-text');
 
@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
         q2OtherText.addEventListener('input', () => {
             if (q2OtherText.value.trim() !== '') {
                 q2OtherCheckbox.checked = true;
+            } else {
+                q2OtherCheckbox.checked = false; // 如果清空了，順便取消打勾
             }
         });
     }
@@ -25,6 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 🚀 送出表單
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
+
+        // 加上表單驗證，確保必填 (required) 都有填到
+        if (!form.checkValidity()) {
+            form.reportValidity(); // 觸發瀏覽器原生的必填提示
+            return;
+        }
 
         const submitBtn = form.querySelector('.submit-btn');
         submitBtn.innerHTML = '提交中...';
@@ -34,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const data = {
             q1: formData.get('q1'),
-            q2: formData.getAll('q2[]'), // ⭐ 多選
+            q2: formData.getAll('q2[]'), // ⭐ 多選 (記得 Supabase 資料表要設為 text[] 或 jsonb)
             q2_other: formData.get('q2_other_text'),
             q3: formData.get('q3'),
             q4: formData.get('q4'),
@@ -51,9 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
             .insert([data]);
 
         if (error) {
-            alert('送出失敗');
-            console.log(error);
-            submitBtn.innerHTML = '提交問卷';
+            alert('送出失敗，請稍後再試！');
+            console.error('Supabase Error:', error);
+            submitBtn.innerHTML = '提交問卷 <span class="arrow">→</span>';
             submitBtn.disabled = false;
             return;
         }
@@ -66,6 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // reset
     resetBtn.addEventListener('click', () => {
         form.reset();
+        const submitBtn = form.querySelector('.submit-btn');
+        submitBtn.innerHTML = '提交問卷 <span class="arrow">→</span>';
+        submitBtn.disabled = false;
+        
         successMessage.classList.add('hidden');
         form.classList.remove('hidden');
     });
