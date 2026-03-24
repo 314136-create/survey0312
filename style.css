@@ -175,7 +175,8 @@ body {
     border-color: rgba(255, 255, 255, 0.3);
 }
 
-.custom-option input {
+.custom-option input[type="radio"],
+.custom-option input[type="checkbox"] {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -248,93 +249,6 @@ body {
 .custom-option:has(input:checked) {
     border-color: var(--primary);
     background: rgba(99, 102, 241, 0.1);
-}
-
-/* Select Box */
-.select-wrapper {
-    position: relative;
-}
-
-.select-wrapper::after {
-    content: '▼';
-    position: absolute;
-    top: 50%;
-    right: 1rem;
-    transform: translateY(-50%);
-    pointer-events: none;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-}
-
-select {
-    width: 100%;
-    padding: 1rem;
-    border-radius: 12px;
-    background: var(--input-bg);
-    border: 1px solid var(--input-border);
-    color: var(--text-main);
-    font-family: inherit;
-    font-size: 1rem;
-    appearance: none;
-    outline: none;
-    transition: all 0.2s ease;
-    cursor: pointer;
-}
-
-select:focus {
-    border-color: var(--input-focus);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-}
-
-select option {
-    background: var(--bg-base);
-    color: var(--text-main);
-}
-
-/* Range Slider */
-.slider-container {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: var(--input-bg);
-    padding: 1rem;
-    border-radius: 12px;
-    border: 1px solid var(--input-border);
-}
-
-.custom-slider {
-    flex: 1;
-    -webkit-appearance: none;
-    appearance: none;
-    height: 6px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-    outline: none;
-}
-
-.custom-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--primary);
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
-    transition: transform 0.1s;
-}
-
-.custom-slider::-webkit-slider-thumb:hover {
-    transform: scale(1.1);
-}
-
-.slider-value {
-    min-width: 50px;
-    text-align: center;
-    font-weight: 600;
-    color: var(--primary);
-    background: rgba(99, 102, 241, 0.1);
-    padding: 0.4rem 0.8rem;
-    border-radius: 8px;
 }
 
 /* Textarea */
