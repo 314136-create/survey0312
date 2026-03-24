@@ -1,3 +1,9 @@
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+const supabase = createClient(
+  '你的SUPABASE_URL',
+  '你的SUPABASE_ANON_KEY'
+)
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('survey-form');
     const successMessage = document.getElementById('success-message');
@@ -19,8 +25,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Handle form submission
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
+    form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    const data = {
+        q1: formData.get('q1'),
+        q3: formData.get('q3'),
+        q4: formData.get('q4'),
+        q5: formData.get('q5'),
+        q6: formData.get('q6'),
+        q7: formData.get('q7'),
+        q8: formData.get('q8'),
+        q9: formData.get('q9'),
+        q10: formData.get('q10')
+    };
+
+    const { error } = await supabase
+        .from('survey') // 你的資料表名稱
+        .insert([data]);
+
+    if (error) {
+        alert('送出失敗');
+        console.log(error);
+        return;
+    }
+
+    // 成功才顯示動畫
+    form.classList.add('hidden');
+    successMessage.classList.remove('hidden');
+});
         
         // Add submitting state to button
         const submitBtn = form.querySelector('.submit-btn');
