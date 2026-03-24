@@ -24,7 +24,6 @@
 
         <form id="survey-form">
             <h3 class="section-title">第一部分：日常習慣與痛點</h3>
-            <!-- Q1 -->
             <div class="form-group">
                 <label class="question-label">1. 請問您平常購物時，購買或索取「一次性塑膠袋」的頻率為何？ (單選題)</label>
                 <div class="options-container radio-group">
@@ -36,7 +35,6 @@
                 </div>
             </div>
 
-            <!-- Q2 -->
             <div class="form-group">
                 <label class="question-label">2. 您認為自己在實踐環保（如自備環保袋）時，最常遇到的困難是什麼？ (多選題)</label>
                 <div class="options-container checkbox-group">
@@ -44,17 +42,19 @@
                     <label class="custom-option"><input type="checkbox" name="q2[]" value="2"><span class="custom-checkbox"></span><span class="option-text">傳統環保袋收納不方便或外觀不好看</span></label>
                     <label class="custom-option"><input type="checkbox" name="q2[]" value="3"><span class="custom-checkbox"></span><span class="option-text">覺得帶不帶沒差，缺乏立即的成就感</span></label>
                     <label class="custom-option"><input type="checkbox" name="q2[]" value="4"><span class="custom-checkbox"></span><span class="option-text">容易弄髒且不易清洗</span></label>
-                    <label class="custom-option" style="display: flex; align-items: center; gap: 8px;">
-                        <input type="checkbox" name="q2[]" value="other" id="q2-other-checkbox">
-                        <span class="custom-checkbox"></span>
-                        <span class="option-text" style="white-space: nowrap;">其他：</span>
-                        <input type="text" name="q2_other_text" class="inline-text-input" placeholder="請說明..." id="q2-other-text" style="flex: 1; border: 1px solid #d1d5db; border-radius: 8px; padding: 6px 12px; font-family: inherit; font-size: 0.95rem; outline: none; transition: border-color 0.2s;">
-                    </label>
+                    
+                    <div class="custom-option" style="display: flex; align-items: center; gap: 8px; cursor: default;">
+                        <label style="display: flex; align-items: center; cursor: pointer; flex-shrink: 0; margin-bottom: 0;">
+                            <input type="checkbox" name="q2[]" value="other" id="q2-other-checkbox">
+                            <span class="custom-checkbox"></span>
+                            <span class="option-text" style="white-space: nowrap;">其他：</span>
+                        </label>
+                        <input type="text" name="q2_other_text" class="inline-text-input" placeholder="請說明..." id="q2-other-text" style="flex: 1; border: 1px solid #d1d5db; border-radius: 8px; padding: 6px 12px; font-family: inherit; font-size: 0.95rem; outline: none; transition: border-color 0.2s; background: transparent; color: white;">
+                    </div>
                 </div>
             </div>
 
             <h3 class="section-title">第二部分：產品特色與設計接受度</h3>
-            <!-- Q3 -->
             <div class="form-group">
                 <label class="question-label">3. 【環保材質】「Reborn」環保袋是使用廢棄咖啡渣與生物塑膠製成，使用壽命結束後可埋入土中自然分解並具備增肥效果。這樣的材質會提升您使用它的意願嗎？ (單選題)</label>
                 <div class="options-container radio-group inline-radio-group">
@@ -66,7 +66,6 @@
                 </div>
             </div>
 
-            <!-- Q4 -->
             <div class="form-group">
                 <label class="question-label">4. 【外觀與結構設計】本產品採用「一體成形」與「卡扣式設計」來取代傳統縫線與五金配件，且袋內附有「分隔結構」方便收納。您對此設計實用性的評價為何？ (單選題)</label>
                 <div class="options-container radio-group inline-radio-group">
@@ -78,7 +77,6 @@
                 </div>
             </div>
 
-            <!-- Q5 -->
             <div class="form-group">
                 <label class="question-label">5. 【科技整合】環保袋內建 NFC 感測功能，只要用手機輕觸感應，就能自動紀錄您每次使用環保袋的「次數」與「時間」。您認為這個功能對您來說吸引力有多高？ (單選題)</label>
                 <div class="options-container radio-group inline-radio-group">
@@ -91,7 +89,6 @@
             </div>
 
             <h3 class="section-title">第三部分：遊戲化體驗與行為改變</h3>
-            <!-- Q6 -->
             <div class="form-group">
                 <label class="question-label">6. 【AI 遊戲化互動】為了消除「知道要環保卻做不到」的行動落差，我們導入了專屬 APP。當您累積使用次數後，可以在 APP 內進行 AI 生成的環保知識問答，並賺取經驗值來解鎖「虛擬寵物（如：R咖啡杯、吉祥物寶寶）」。這項機制會讓您更有動力持續帶環保袋出門嗎？ (單選題)</label>
                 <div class="options-container radio-group inline-radio-group">
@@ -103,7 +100,6 @@
                 </div>
             </div>
 
-            <!-- Q7 -->
             <div class="form-group">
                 <label class="question-label">7. 【教育意義】您認為將「環保知識問答」與「養成遊戲」結合，是否能有效幫助您或周遭的人學習到正確的永續發展觀念？ (單選題)</label>
                 <div class="options-container radio-group inline-radio-group">
@@ -115,7 +111,6 @@
                 </div>
             </div>
 
-            <!-- Q8 -->
             <div class="form-group">
                 <label class="question-label">8. 【成效評估】綜合比較傳統環保袋，您認為「Reborn」將環保成效數據化（讓您清楚看到自己減少了多少塑膠），是否能有效改善您的環保習慣？ (單選題)</label>
                 <div class="options-container radio-group">
@@ -126,7 +121,6 @@
             </div>
 
             <h3 class="section-title">第四部分：購買意願與回饋</h3>
-            <!-- Q9 -->
             <div class="form-group">
                 <label class="question-label">9. 【購買意願】綜合以上特色（可分解咖啡渣材質、NFC感測紀錄、AI問答與虛擬寵物養成），未來若此產品上市，您的購買意願有多高？ (單選題)</label>
                 <div class="options-container radio-group inline-radio-group">
@@ -138,7 +132,6 @@
                 </div>
             </div>
 
-            <!-- Q10 -->
             <div class="form-group">
                 <label class="question-label" for="q10">10. 【開放建議】對於「Reborn 重塑新生」環保袋，您有任何其他的建議，或是期待產品未來還能增加什麼樣的功能嗎？ (簡答題)</label>
                 <textarea id="q10" name="q10" rows="4" placeholder="請寫下您的想法與建議..."></textarea>
